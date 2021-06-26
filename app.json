@@ -1,0 +1,12 @@
+{
+  "name": "spotistats",
+  "displayName": "spotistats",
+  "expo": {
+    "name": "spotistats",
+    "slug": "spotistats",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
