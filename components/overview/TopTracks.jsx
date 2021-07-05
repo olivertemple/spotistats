@@ -6,11 +6,11 @@ import { TouchableHighlight } from "react-native-gesture-handler";
 export default class TopTracks extends Component{
 
     constructor(props){
-        super(props)
+        super(props);
         this.fetchData = this.fetchData.bind(this);
         this.state = {
             dataFetched:false
-        }
+        };
         this.fetchData();
     }
     async fetchData(){
@@ -21,23 +21,23 @@ export default class TopTracks extends Component{
             headers:{
                 "Authorization":"Bearer "+access_token
             }
-          }
+          };
 
-          let res = await fetch("https://api.spotify.com/v1/me/top/artists?time_range=short_term",data)
+          let res = await fetch("https://api.spotify.com/v1/me/top/artists?time_range=short_term",data);
           res = await res.json();
           if (res.error){
             if (res.error.status === 401){
               await this.props.refresh();
               this.fetchData();
             }else if (res.error.message === "Invalid access token"){
-              console.log("Invalid access token")
+              console.log("Invalid access token");
             }
           }else{
-            res = res.items
+            res = res.items;
             this.setState({
                 artists:res,
                 dataFetched:true
-            })
+            });
 
           }
     }
