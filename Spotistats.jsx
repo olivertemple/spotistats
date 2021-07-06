@@ -16,8 +16,8 @@ export default class Spotistats extends Component{
     constructor(props){
         super(props)
         this.state = {
-            screen:"stats",
-            active:"stats"
+            screen:"overview",
+            active:"home"
         }
         this.previousStates = [];
         this.previousStateIndex = null;

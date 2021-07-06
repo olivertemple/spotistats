@@ -45,7 +45,7 @@ export default class Stats extends Component{
 
     async getData(){
         let topArtists = {};
-        let artists = await new Fetch("https://api.spotify.com/v1/me/top/artists").getData();
+        let artists = await new Fetch("https://api.spotify.com/v1/me/top/artists?time_range=short_term").getData();
         let number = 0;
         artists.forEach(item => {
             item.items.forEach(artist => {
@@ -54,8 +54,8 @@ export default class Stats extends Component{
             })
         })
 
-        let tracks = await new Fetch("https://api.spotify.com/v1/me/top/tracks?time_range=short_term").getData()
-
+        let tracks = await new Fetch("https://api.spotify.com/v1/me/top/artists?time_range=short_term").getData()
+        console.log(tracks)
         let genres = {};
         let trackFeatures = {};
         let max = {genre:"", number:0};
@@ -64,7 +64,7 @@ export default class Stats extends Component{
             let items = item.items;
             let artistIds = [];
             items.forEach(track => {
-                artistIds.push(track.artists[0].id)                
+                artistIds.push(track.id)                
             })
             artistIds = artistIds.join(",");
             let artists = await new Fetch("https://api.spotify.com/v1/artists?ids="+artistIds).getData();
@@ -85,6 +85,17 @@ export default class Stats extends Component{
                 })
             })
             console.log(genres)
+            
+            Object.keys(genres).forEach(genre => {
+                if (genres[genre].length > max.number){
+                    max = {genre:genre, number:genres[genre].length}
+                }
+            })
+        })
+        tracks = await new Fetch("https://api.spotify.com/v1/me/top/tracks?time_range=short_term").getData()
+        console.log(tracks)
+        tracks.forEach(async item => {
+            let items = item.items;
             let trackIds = [];
             items.forEach(track => {
                 trackIds.push(track.id)
@@ -104,13 +115,8 @@ export default class Stats extends Component{
                     }
                 })
             })
-            Object.keys(genres).forEach(genre => {
-                if (genres[genre].length > max.number){
-                    max = {genre:genre, number:genres[genre].length}
-                }
-            })
         })
-
+        
         
 
         let listened = await this.updateRecent();
