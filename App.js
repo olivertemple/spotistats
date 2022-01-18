@@ -17,7 +17,10 @@ export default class App extends Component {
     this.loggedIn = this.loggedIn.bind(this);
     this.refresh = this.refresh.bind(this);
 
-    
+    this.RedirectUrl = "com.spotistats://auth/";
+    this.url = "com.spotistats://"
+
+    /*
     if (Platform.OS === "android"){
       //this.RedirectUrl = "exp://172.16.3.104:19000/auth/"
       //this.url = "exp://172.16.3.104:19000/"
@@ -26,7 +29,7 @@ export default class App extends Component {
     }else{
       this.RedirectUrl = "http://127.0.0.1:19006/auth/"
       this.url = "http://127.0.0.1:19006/"
-    }    
+    }    */
   }
 
   componentDidMount(){
@@ -48,7 +51,7 @@ export default class App extends Component {
   }
   login(){
     //Linking.openURL("https://accounts.spotify.com/authorize?client_id=034aecf762cf4795a294c19c1e08c9e7&response_type=code&redirect_uri=com.spotistats://auth/&scope=playlist-read-private").then(() => {Linking.getInitialURL().then(res => alert(res))})
-    Linking.openURL("https://accounts.spotify.com/authorize?client_id=034aecf762cf4795a294c19c1e08c9e7&response_type=code&redirect_uri="+this.RedirectUrl+"&scope=playlist-read-private,user-library-read,user-read-recently-played,user-top-read")
+    Linking.openURL("https://accounts.spotify.com/authorize?client_id=034aecf762cf4795a294c19c1e08c9e7&response_type=code&redirect_uri="+this.RedirectUrl+"&scope=playlist-read-private,user-library-read,user-read-recently-played,user-top-read,user-library-modify,playlist-modify-public,playlist-modify-private")
     //Linking.openURL("https://accounts.spotify.com/authorize?client_id=034aecf762cf4795a294c19c1e08c9e7&response_type=code&redirect_uri=exp://192.168.1.117:19000/auth/&scope=playlist-read-private")        
   }
   async getTokens(code){

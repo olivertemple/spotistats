@@ -39,11 +39,11 @@ export default class Fetch{
     }
 
     async error(res){
-        console.log(res)
-        if (res.error.status === 401){
+        console.error(res)
+        if (res.error.status === 401 || res.error.message === "The access token expired"){
             await this.refresh();
             this.getData();
-        }else if (this.tracks.error.message === "invalid access token"){
+        }else if (res.error.message === "invalid access token"){
             console.error("invalid access token for Spotify request.")
         }
     }

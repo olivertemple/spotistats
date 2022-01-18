@@ -10,6 +10,9 @@ import Top from "./components/Top";
 
 import Stats from "./components/Stats"
 import Genres from "./components/Genres"
+
+import Create from "./components/Create";
+
 import NavBar from "./components/NavBar"
 export default class Spotistats extends Component{
 
@@ -73,9 +76,9 @@ export default class Spotistats extends Component{
             this.setState({
                 active:"stats"
             })
-        }else if (state.screen === "charts"){
+        }else if (state.screen === "create"){
             this.setState({
-                active:"charts"
+                active:"create"
             })
         }
 
@@ -119,6 +122,10 @@ export default class Spotistats extends Component{
         }else if (this.state.screen === "genres"){
             return(
                 <Genres showScreen={this.showScreen} back={this.back} genres={this.state.genres} artistGenres={this.state.artistGenres} topArtists={this.state.topArtists}></Genres>
+            )
+        }else if (this.state.screen === "create"){
+            return(
+                <Create showScreen={this.showScreen}></Create>
             )
         }
     }

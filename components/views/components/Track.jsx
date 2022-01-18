@@ -32,8 +32,8 @@ export default class Track extends Component{
     render(){
         let textWidth = Dimensions.get("window").width - 150
         return(
-            <TouchableHighlight onPress={this.showSong}>
-                <View style={{display:"flex",flexDirection:"row", justifyContent:"space-between", marginLeft:5, marginRight:5, marginTop:5, padding:10, backgroundColor:"rgb(20,20,20)", borderRadius:10, alignItems:"center"}}>
+            <TouchableHighlight onPress={this.showSong} style={{borderRadius:10, marginLeft:5, marginRight:5, marginTop:5}}>
+                <View style={{display:"flex",flexDirection:"row", justifyContent:"space-between", padding:10, backgroundColor:"rgb(20,20,20)", borderRadius:10, alignItems:"center"}}>
                     {this.getExtraText()}
                    
                     <View style={{width:textWidth}}>

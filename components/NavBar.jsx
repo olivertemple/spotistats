@@ -14,8 +14,8 @@ export default class NavBar extends Component{
                 <TouchableHighlight onPress={() => {this.props.showScreen({screen:"stats"})}}>
                     <Text style={[styles.GeneralText,{color:this.props.active==="stats" ? "#1DB954" : "white"}]}>Stats</Text>
                 </TouchableHighlight>
-                <TouchableHighlight>
-                    <Text style={[styles.GeneralText,{color:this.props.active==="charts" ? "#1DB954" : "white"}]}>Charts</Text>
+                <TouchableHighlight onPress={() => {this.props.showScreen({screen:"create"})}}>
+                    <Text style={[styles.GeneralText,{color:this.props.active==="create" ? "#1DB954" : "white"}]}>Create</Text>
                 </TouchableHighlight>
             </View>
         )
